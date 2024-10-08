@@ -25,23 +25,21 @@ if (!cached) {
 }
 
 async function connectToDatabase(): Promise<Mongoose> {
-	async function connectToDatabase(): Promise<Mongoose> {
-		// If a connection is already established, return it
-		if (cached.conn) {
-			return cached.conn;
-		}
-
-		// If there's no promise, create a new connection promise
-		if (!cached.promise) {
-			cached.promise = mongoose
-				.connect(MONGODB_URI)
-				.then((mongooseInstance) => mongooseInstance);
-		}
-
-		// Cache the resolved connection and return it
-		cached.conn = await cached.promise;
+	// If a connection is already established, return it
+	if (cached.conn) {
 		return cached.conn;
 	}
+
+	// If there's no promise, create a new connection promise
+	if (!cached.promise) {
+		cached.promise = mongoose
+			.connect(MONGODB_URI)
+			.then((mongooseInstance) => mongooseInstance);
+	}
+
+	// Cache the resolved connection and return it
+	cached.conn = await cached.promise;
+	return cached.conn;
 }
 
 export default connectToDatabase;
