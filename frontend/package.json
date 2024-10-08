@@ -1,5 +1,5 @@
 {
-	"name": "inklings",
+	"name": "frontend",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -8,6 +8,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"types": "workspace:*",
 		"@nextui-org/button": "2.0.38",
 		"@nextui-org/code": "2.0.33",
 		"@nextui-org/input": "2.2.5",

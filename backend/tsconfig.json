@@ -11,9 +11,10 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*"]
+      "*": ["node_modules/*"],
+      "types/*": ["../types/*"]
     }
   },
-  "include": ["**/*"],
+  "include": ["**/*", "../types"],
   "exclude": ["node_modules"]
 }
