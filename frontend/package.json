@@ -8,7 +8,6 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"types": "workspace:*",
 		"@nextui-org/button": "2.0.38",
 		"@nextui-org/code": "2.0.33",
 		"@nextui-org/input": "2.2.5",
@@ -25,10 +24,12 @@
 		"clsx": "2.1.1",
 		"framer-motion": "~11.1.1",
 		"intl-messageformat": "^10.5.0",
+		"mongoose": "^8.7.0",
 		"next": "14.2.4",
 		"next-themes": "^0.2.1",
 		"react": "18.3.1",
-		"react-dom": "18.3.1"
+		"react-dom": "18.3.1",
+		"types": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/node": "20.5.7",

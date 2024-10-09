@@ -1,4 +1,7 @@
 import mongoose, { Mongoose } from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Declare a global type for caching the database connection in the Node.js global scope
 declare global {
@@ -10,6 +13,7 @@ declare global {
 
 // Retrieve MongoDB connection string from the environment
 const MONGODB_URI = `mongodb+srv://rickastley:${process.env.DB_PASSWORD}@cluster0.na8yz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+
 
 if (!MONGODB_URI) {
 	throw new Error(
