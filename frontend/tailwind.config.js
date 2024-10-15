@@ -31,11 +31,12 @@ module.exports = {
 				},
 				dark: {
 					colors: {
-						text: '#E0E0E0',
-						background: '#1A1A1A',
-						primary: '#FF6B6B',
-						secondary: '#4ECDC4',
-						accent: '#FFD93D',
+						text: '#E1D9CD',
+						background: '#1D1B2F',
+						secondary: '#372C47',
+						accent: '#03ABAB',
+						cta: '#C6888C',
+						tertiary: '#096969',
 					},
 				},
 			},

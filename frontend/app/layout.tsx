@@ -1,13 +1,13 @@
 import '@/styles/globals.css';
 import { Metadata, Viewport } from 'next';
-import { Link } from '@nextui-org/link';
 import clsx from 'clsx';
 
 import { Providers } from './providers';
 
 import { siteConfig } from '@/config/site';
 import { fontBody } from '@/config/fonts';
-import { GithubIcon } from '@/components/icons';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
 
 export const metadata: Metadata = {
 	title: siteConfig.name,
@@ -30,26 +30,17 @@ export default function RootLayout({
 			<head />
 			<body
 				className={clsx(
-					'min-h-screen bg-background font-roboto antialiased',
+					'min-h-screen bg-background font-roboto text-text antialiased',
 					fontBody.variable
 				)}
 			>
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+					<Header />
 					<div className='relative flex flex-col h-screen'>
-						<main className='container flex-grow px-6 pt-16 mx-auto max-w-7xl'>
+						<main className='container sm:grid flex-grow sm:grid-cols-[3fr_1fr] px-6 pt-12 mx-auto max-w-7xl sm:px-16 lg:px-20'>
 							{children}
 						</main>
-						<footer className='flex items-center justify-center w-full py-3'>
-							<Link
-								isExternal
-								className='flex items-center gap-1 text-current'
-								href='https://www.github.com/abdullah-sah/Inklings'
-								title='Follow on GitHub'
-							>
-								<GithubIcon />
-								Follow on GitHub
-							</Link>
-						</footer>
+						<Footer />
 					</div>
 				</Providers>
 			</body>
