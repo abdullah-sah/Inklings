@@ -4,8 +4,8 @@ import type { FC } from 'react';
 
 const Footer: FC = () => {
 	return (
-		<footer className='flex flex-row p-4 px-24 mt-8 rounded-t-3xl bg-secondary'>
-			<section className='flex flex-col justify-between w-1/3'>
+		<footer className='flex flex-row p-4 px-12 mt-8 rounded-t-3xl bg-secondary sm:px-24'>
+			<section className='flex flex-col justify-between w-full sm:w-1/2'>
 				<div>
 					<h2 className='text-3xl font-heading text-bold'>Inklings</h2>
 					<p className='text-sm font-body'>© 2024 Inklings</p>
@@ -27,8 +27,8 @@ const Footer: FC = () => {
 				</div>
 			</section>
 
-			<section className='flex flex-row w-2/3 gap-12'>
-				<div className='w-1/2'>
+			<section className='flex-row justify-start hidden w-2/3 gap-20 sm:flex md:gap-24 lg:gap-36 xl:gap-48'>
+				<div className=''>
 					<h2 className='text-xl font-bold border-b-4 border-background font-heading w-fit'>
 						Explore
 					</h2>
@@ -40,7 +40,7 @@ const Footer: FC = () => {
 					</ul>
 				</div>
 
-				<div className='w-1/2'>
+				<div className=''>
 					<h2 className='text-xl font-bold border-b-4 border-background font-heading w-fit'>
 						The Developer (me)
 					</h2>
