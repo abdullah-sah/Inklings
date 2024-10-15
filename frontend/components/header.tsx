@@ -12,7 +12,7 @@ import {
 import { Link } from '@nextui-org/link';
 import { Input } from '@nextui-org/input';
 import { siteConfig } from '@/config/site';
-import { SearchIcon } from '@/components/icons';
+import { Logo, SearchIcon } from '@/components/icons';
 import {
 	Dropdown,
 	DropdownItem,
@@ -43,8 +43,8 @@ const Header: FC = () => {
 						aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
 						className='sm:hidden'
 					/>
-					<NavbarBrand className='mr-4 text-xl font-bold font-heading'>
-						Inklings
+					<NavbarBrand className='mr-4' as='a' href='/'>
+						<Logo className='fill-text' size={80} />
 					</NavbarBrand>
 					<NavbarContent className='hidden gap-6 sm:flex' justify='center'>
 						{menuItems.map((item, index) => (

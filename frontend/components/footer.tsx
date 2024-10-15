@@ -1,4 +1,4 @@
-import { DiscordIcon, GithubIcon, TwitterIcon } from '@/components/icons';
+import { DiscordIcon, GithubIcon, Logo, TwitterIcon } from '@/components/icons';
 import Link from 'next/link';
 import type { FC } from 'react';
 
@@ -7,7 +7,7 @@ const Footer: FC = () => {
 		<footer className='flex flex-row p-4 px-12 mt-8 rounded-t-3xl bg-secondary sm:px-24'>
 			<section className='flex flex-col justify-between w-full sm:w-1/2'>
 				<div>
-					<h2 className='text-3xl font-heading text-bold'>Inklings</h2>
+					<Logo className='fill-text' size={80} />
 					<p className='text-sm font-body'>© 2024 Inklings</p>
 				</div>
 

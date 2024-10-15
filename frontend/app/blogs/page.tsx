@@ -7,7 +7,7 @@ const blogs = [
 
 export default function BlogList() {
 	return (
-		<div className='container py-8 mx-auto'>
+		<div className='container mx-auto'>
 			<h1 className='mb-6 text-3xl font-bold'>Blogs</h1>
 			<ul className='space-y-4'>
 				{blogs.map((blog) => (
