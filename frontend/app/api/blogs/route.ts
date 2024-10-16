@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from 'backend/lib/mongodb';
 import Blog from 'backend/models/Blog';
+import User from 'backend/models/User';
+import Post from 'backend/models/Post';
 
 // fetch all blogs (GET request)
 export async function GET() {
@@ -10,7 +12,7 @@ export async function GET() {
 		return NextResponse.json(blogs);
 	} catch (error) {
 		return NextResponse.json(
-			{ error: 'Failed to fetch blogs' },
+			{ error: `Failed to fetch blogs: ${error}` },
 			{ status: 500 }
 		);
 	}

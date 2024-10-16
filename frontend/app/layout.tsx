@@ -8,6 +8,7 @@ import { siteConfig } from '@/config/site';
 import { fontBody } from '@/config/fonts';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
+import CategorySidebar from '@/components/category-sidebar';
 
 export const metadata: Metadata = {
 	title: siteConfig.name,
@@ -39,6 +40,7 @@ export default function RootLayout({
 					<div className='relative flex flex-col h-screen'>
 						<main className='container sm:grid flex-grow sm:grid-cols-[3fr_1fr] px-6 pt-12 mx-auto max-w-7xl sm:px-16 lg:px-20'>
 							{children}
+							{siteConfig.showSidebar && <CategorySidebar />}
 						</main>
 						<Footer />
 					</div>

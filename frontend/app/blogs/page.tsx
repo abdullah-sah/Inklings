@@ -1,24 +1,42 @@
-import Link from 'next/link';
+'use client';
 
-const blogs = [
-	{ id: '1', title: 'My First Blog' },
-	{ id: '2', title: 'Tech Adventures' },
-]; // Static data for now, will fetch dynamically later
+import { useState, useEffect } from 'react';
+import { IBlog } from 'types/index';
+import ContentCard from '@/components/ui/content-card';
+import SubHeading from '@/components/sub-heading';
 
 export default function BlogList() {
+	const [blogs, setBlogs] = useState<IBlog[]>([]);
+
+	useEffect(() => {
+		const fetchBlogs = async () => {
+			try {
+				const res = await fetch('/api/blogs');
+				const data = await res.json();
+				setBlogs(data);
+			} catch (err) {
+				console.error('Error fetching blogs: ', err);
+			}
+		};
+
+		fetchBlogs();
+	}, []);
+
 	return (
-		<div className='container mx-auto'>
-			<h1 className='mb-6 text-3xl font-bold'>Blogs</h1>
-			<ul className='space-y-4'>
-				{blogs.map((blog) => (
-					<li
-						key={blog.id}
-						className='p-4 text-xl font-semibold border rounded'
-					>
-						<Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-					</li>
-				))}
-			</ul>
-		</div>
+		<section className='container mx-auto'>
+			<SubHeading text='Blogs' />
+			<div className='grid gap-4 sm:grid-cols-2'>
+				{blogs.length > 0 &&
+					blogs.map((blog, i) => (
+						<ContentCard
+							key={`blog-${blog.title}-card-${i}`}
+							authorName={blog.user.name}
+							blogName={blog.title}
+							dateWritten={blog.createdAt.split('T')[0]}
+							href='/'
+						/>
+					))}
+			</div>
+		</section>
 	);
 }

@@ -10,12 +10,13 @@ export interface IUser extends Document {
 export interface IPost extends Document {
 	title: string;
 	content: string;
-	createdAt: Date;
+	createdAt: string;
 	blog: IBlog['_id'];
 }
 
 export interface IBlog extends Document {
 	title: string;
-	user: IUser['_id'];
-	posts: IPost['_id'][];
+	user: IUser;
+	posts: IPost[];
+	createdAt: string;
 }

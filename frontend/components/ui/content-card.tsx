@@ -47,11 +47,11 @@ const ContentCard: FC<Props> = ({
 			>
 				<div className='absolute top-0 left-0 w-full h-full transition duration-300 hover/card:bg-black opacity-60'></div>
 			</div>
-			<div className='text-content'>
+			<div className='text-content font-body'>
 				<h2 className='relative z-10 text-2xl font-bold font-heading md:text-2xl'>
 					{blogName}
 				</h2>
-				<p className='relative z-10 font-normal font-body text-md text-cta/70'>
+				<p className='relative z-10 font-normal tracking-wider text-md text-cta/70'>
 					By <span className='font-bold text-cta'>{authorName}</span> on{' '}
 					{dateWritten}
 				</p>
