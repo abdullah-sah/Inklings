@@ -4,7 +4,7 @@ import { IPost } from 'types';
 const PostSchema: Schema<IPost> = new Schema({
 	title: { type: String, required: true },
 	content: { type: String, required: true },
-	createdAt: { type: Date, default: Date.now },
+	createdAt: { type: String, default: new Date().toISOString() },
 	blog: { type: Schema.Types.ObjectId, ref: 'Blog', required: true },
 });
 

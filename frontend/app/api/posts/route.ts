@@ -42,7 +42,7 @@ export async function POST(req: Request) {
 
 		await post.save();
 
-		blog.posts.push(post._id);
+		blog.posts.push(post);
 		await blog.save();
 
 		return NextResponse.json(post, { status: 201 });

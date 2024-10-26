@@ -1,5 +1,6 @@
 'use client';
-import { useState, type FC } from 'react';
+
+import { useEffect, useState, type FC } from 'react';
 import {
 	Navbar,
 	NavbarBrand,
@@ -20,18 +21,19 @@ import {
 	DropdownTrigger,
 } from '@nextui-org/dropdown';
 import { Avatar } from '@nextui-org/avatar';
+import { Button } from '@nextui-org/button';
+import { useUserContext } from '@/context/UserContext';
 
 const Header: FC = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuItems = siteConfig.navItems;
 
-	// TODO: Change this once we have auth & a signin context/state
-	const loggedInUser = 'Jason Bourne';
-	const signedIn = true;
+	const { user, signedIn, signOut } = useUserContext();
+
+	useEffect(() => {}, [signedIn]);
 
 	return (
 		<header className='sticky inset-x-0 top-0 z-50 flex items-center justify-center w-full'>
-			{/* TODO: replace text with the logo: */}
 			<Navbar
 				isBordered
 				onMenuOpenChange={setIsMenuOpen}
@@ -71,7 +73,7 @@ const Header: FC = () => {
 						startContent={<SearchIcon size={18} />}
 						type='search'
 					/>
-					{signedIn && (
+					{signedIn && user ? (
 						<Dropdown
 							placement='bottom-end'
 							className='bg-background text-text'
@@ -82,7 +84,7 @@ const Header: FC = () => {
 									as='button'
 									className='transition-transform min-w-[32px]'
 									color='secondary'
-									name={loggedInUser}
+									name={user.username}
 									size='sm'
 									src='https://i.pravatar.cc/150?u=a042581f4e29026704d'
 								/>
@@ -90,7 +92,7 @@ const Header: FC = () => {
 
 							<DropdownMenu
 								aria-label='Profile Actions'
-								variant='flat'
+								variant='solid'
 								itemClasses={{
 									base: 'data-[hover=true]:bg-secondary data-[hover=true]:text-cta',
 								}}
@@ -98,15 +100,31 @@ const Header: FC = () => {
 								<DropdownItem
 									key='profile'
 									className='gap-2 h-14 data-[hover=true]:bg-background data-[hover=true]:text-text cursor-default'
+									textValue={`Signed in as ${user.username}`}
 								>
 									<p className='font-semibold capital '>Signed in as</p>
-									<p className='font-semibold'>{loggedInUser}</p>
+									<p className='font-semibold'>{user.username}</p>
 								</DropdownItem>
 								<DropdownItem key='settings'>My Settings</DropdownItem>
 								<DropdownItem key='posts'>My Posts</DropdownItem>
-								<DropdownItem key='posts'>My Posts</DropdownItem>
+								<DropdownItem
+									key='logout'
+									className='data-[hover=true]:bg-danger-50 data-[hover=true]:text-danger'
+									onClick={signOut}
+								>
+									Log Out
+								</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
+					) : (
+						<Button
+							as='a'
+							href='/sign-in'
+							variant='solid'
+							className='font-bold bg-cta text-text font-heading'
+						>
+							Sign in
+						</Button>
 					)}
 				</NavbarContent>
 

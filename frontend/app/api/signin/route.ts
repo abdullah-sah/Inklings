@@ -5,15 +5,15 @@ import User from 'backend/models/User';
 export async function POST(req: Request) {
 	try {
 		const body = await req.json();
-		const { email, password } = body;
+		const { username, password } = body;
 
-		if (!email || !password) {
+		if (!username || !password) {
 			return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
 		}
 
 		await connectToDatabase();
 
-		const user = await User.findOne({ email });
+		const user = await User.findOne({ username });
 		if (!user) {
 			return NextResponse.json(
 				{ error: 'Couldnt find that user' },

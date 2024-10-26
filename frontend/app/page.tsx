@@ -1,3 +1,5 @@
+'use client';
+
 import SubHeading from '@/components/sub-heading';
 import ContentCard from '@/components/ui/content-card';
 

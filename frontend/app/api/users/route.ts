@@ -16,13 +16,13 @@ export async function GET() {
 	}
 }
 
-// create a new user (POST request). Pass in 'email', 'password', and 'name' to req.body
+// create a new user (POST request). Pass in 'username', 'email', 'password', and 'name' to req.body
 export async function POST(req: Request) {
 	try {
 		const body = await req.json();
-		const { email, password, name } = body;
+		const { username, email, password, name } = body;
 
-		if (!email || !password) {
+		if (!email || !password || !username) {
 			return NextResponse.json(
 				{ error: 'Missing required fields' },
 				{ status: 400 }
@@ -32,6 +32,7 @@ export async function POST(req: Request) {
 		await connectToDatabase();
 
 		const user = new User({
+			username,
 			email,
 			password,
 			name,
