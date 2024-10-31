@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import connectToDatabase from 'backend/lib/mongodb';
 import User from 'backend/models/User';
 
+// pass in username & password to req.body
 export async function POST(req: Request) {
 	try {
 		const body = await req.json();

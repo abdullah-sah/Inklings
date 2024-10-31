@@ -73,7 +73,7 @@ const SignInForm: FC = () => {
 									label='Username'
 									labelPlacement='outside'
 									isClearable
-									onClear={() => field.onChange()}
+									onClear={() => field.onChange('')}
 									classNames={{
 										inputWrapper:
 											'text-text border-cta data-[hover=true]:border-cta/90',
@@ -99,10 +99,12 @@ const SignInForm: FC = () => {
 						<FormItem className='flex flex-col'>
 							<FormControl>
 								<Input
+									type='password'
 									placeholder='Type password here'
 									label='Password'
 									labelPlacement='outside'
-									type='password'
+									isClearable
+									onClear={() => field.onChange('')}
 									classNames={{
 										inputWrapper:
 											'text-text border-cta data-[hover=true]:border-cta/90',

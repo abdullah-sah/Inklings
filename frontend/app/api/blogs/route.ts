@@ -4,11 +4,19 @@ import Blog from 'backend/models/Blog';
 import User from 'backend/models/User';
 import Post from 'backend/models/Post';
 
-// fetch all blogs (GET request)
-export async function GET() {
+// fetch all blogs or fetch a specific blog by passing 'user' param (GET request)
+export async function GET(request: Request) {
 	try {
 		await connectToDatabase();
-		const blogs = await Blog.find().populate('user').exec(); // fetching blogs with user info
+
+		// Extract the search parameters from the request URL
+		const { searchParams } = new URL(request.url);
+		const userId = searchParams.get('user');
+
+		let blogs = userId
+			? await Blog.find({ user: userId }).populate('user').exec()
+			: await Blog.find().populate('user').exec();
+
 		return NextResponse.json(blogs);
 	} catch (error) {
 		return NextResponse.json(

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { createContext, useState, useContext, type ReactNode } from 'react';
-import type { IUser } from 'types';
+import type { IBlog, IPost, IUser } from 'types';
 
 interface UserContextType {
 	user: IUser | null;
@@ -15,6 +15,8 @@ interface UserContextType {
 		password: string,
 		name: string
 	) => Promise<boolean>;
+	getPosts: () => Promise<IPost[]>;
+	getBlogs: () => Promise<IBlog[]>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -37,6 +39,14 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 	const [signedIn, setSignedIn] = useState<boolean>(false);
 
 	const router = useRouter();
+
+	const getPosts: UserContextType['getPosts'] = () => {
+		try {
+			const res = await fetch(`/api/posts`);
+		}
+	};
+
+	const getBlogs: UserContextType['getBlogs'] = () => {};
 
 	const register: UserContextType['register'] = async (
 		username,
@@ -96,7 +106,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 	};
 
 	return (
-		<UserContext.Provider value={{ user, signedIn, signIn, signOut, register }}>
+		<UserContext.Provider value={{ user, signedIn, signIn, signOut, register, getPosts, getBlogs }}>
 			{children}
 		</UserContext.Provider>
 	);

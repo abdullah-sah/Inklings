@@ -23,12 +23,14 @@ import {
 import { Avatar } from '@nextui-org/avatar';
 import { Button } from '@nextui-org/button';
 import { useUserContext } from '@/context/UserContext';
+import { useRouter } from 'next/navigation';
 
 const Header: FC = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuItems = siteConfig.navItems;
 
 	const { user, signedIn, signOut } = useUserContext();
+	const router = useRouter();
 
 	useEffect(() => {}, [signedIn]);
 
@@ -105,7 +107,12 @@ const Header: FC = () => {
 									<p className='font-semibold capital '>Signed in as</p>
 									<p className='font-semibold'>{user.username}</p>
 								</DropdownItem>
-								<DropdownItem key='settings'>My Settings</DropdownItem>
+								<DropdownItem
+									key='profile#2'
+									onClick={() => router.push(`${user.username}/profile`)}
+								>
+									My Profile
+								</DropdownItem>
 								<DropdownItem key='posts'>My Posts</DropdownItem>
 								<DropdownItem
 									key='logout'
